@@ -5,13 +5,16 @@ on:
     - cron: "0 18 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write   # ✅ IMPORTANT (fixes exit code 128)
+
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # ✅ updated version
 
       - name: Make changes
         run: |
